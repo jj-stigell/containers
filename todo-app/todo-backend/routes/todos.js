@@ -16,26 +16,17 @@ router.get('/:id', async (req, res) => {
 
 /* GET todo by id. */
 router.put('/:id', async (req, res) => {
-
   const body = req.body;
-
   const todo = {
     text: body.text,
     done: body.done
   };
-
-
   Todo.findByIdAndUpdate(req.params.id, todo, { new: true })
     .then(updatedNote => {
       res.json(updatedNote)
     })
     .catch(error => res.json(error))
-
-
-  //const todo = await Todo.findById(req.params.id);
-  //res.send(todo);
 });
-
 
 /* POST todo to listing. */
 router.post('/', async (req, res) => {
